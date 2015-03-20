@@ -5,14 +5,18 @@ package com.xiaoqian.coffee.adater;
  */
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.xiaoqian.coffee.activity.CoffeeDetailActivity;
 import com.xiaoqian.coffee.app.AppController;
 import com.xiaoqian.coffee.model.Coffee;
 
@@ -25,6 +29,10 @@ public class CoffeeListViewAdapter extends BaseAdapter{
     //private List<Movie> movieItems;
     private List<Coffee> coffeeItems;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+
+    public static final String COFFEE_NAME = "coffee_name";
+    public static final String COFFEE_DESC = "coffee_desc";
+    public static final String COFFEE_IMAGE_URL = "coffee_image_url";
 
     public CoffeeListViewAdapter(Activity activity, List<Coffee> coffeeItems) {
         this.activity = activity;
@@ -78,7 +86,23 @@ public class CoffeeListViewAdapter extends BaseAdapter{
 
         // description
         desc.setText(m.getCoffeeDesc());
+/*
+        final String coffeeName = m.getCoffeeName();
+        final String coffeeDesc = m.getCoffeeDesc();
+        final String coffeeUrl = m.getImageUrl();
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "list item clicked", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), CoffeeDetailActivity.class);
+                    intent.putExtra(COFFEE_NAME, coffeeName);
+                    intent.putExtra(COFFEE_DESC, coffeeDesc);
+                    intent.putExtra(COFFEE_IMAGE_URL, coffeeUrl);
+                    view.getContext().startActivity(intent);
 
+            }
+        });
+*/
         return convertView;
     }
 

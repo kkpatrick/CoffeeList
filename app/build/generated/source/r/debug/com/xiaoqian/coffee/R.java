@@ -28,28 +28,36 @@ public final class R {
         public static final int year=0x7f050005;
     }
     public static final class drawable {
-        public static final int drip=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int list_row_bg=0x7f020002;
-        public static final int list_row_bg_hover=0x7f020003;
-        public static final int list_row_selector=0x7f020004;
+        public static final int arrow=0x7f020000;
+        public static final int drip=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int list_row_bg=0x7f020003;
+        public static final int list_row_bg_hover=0x7f020004;
+        public static final int list_row_selector=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
+        public static final int action_settings=0x7f09000e;
+        public static final int arrow=0x7f09000a;
         public static final int coffeeImage=0x7f090002;
-        public static final int desc=0x7f090006;
+        public static final int desc=0x7f090007;
+        public static final int description=0x7f09000c;
         public static final int detailDesc=0x7f090001;
         public static final int detailName=0x7f090000;
-        public static final int imageView=0x7f090004;
-        public static final int list=0x7f090003;
-        public static final int name=0x7f090005;
-        public static final int thumbnail=0x7f090007;
+        public static final int imageView=0x7f090005;
+        public static final int list=0x7f090004;
+        public static final int name=0x7f090006;
+        public static final int progress_bar=0x7f09000b;
+        public static final int pull_to_refresh_head=0x7f090009;
+        public static final int refreshable_view=0x7f090003;
+        public static final int thumbnail=0x7f090008;
+        public static final int updated_at=0x7f09000d;
     }
     public static final class layout {
         public static final int activity_coffee_detail=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int custom_action_bar=0x7f030002;
         public static final int list_row=0x7f030003;
+        public static final int pull_to_refresh=0x7f030004;
     }
     public static final class menu {
         public static final int menu_coffee_detail=0x7f080000;
@@ -58,7 +66,14 @@ public final class R {
         public static final int action_settings=0x7f060000;
         public static final int app_name=0x7f060001;
         public static final int hello_world=0x7f060002;
-        public static final int title_activity_coffee_detail=0x7f060003;
+        public static final int not_updated_yet=0x7f060003;
+        public static final int pull_to_refresh=0x7f060004;
+        public static final int refreshing=0x7f060005;
+        public static final int release_to_refresh=0x7f060006;
+        public static final int time_error=0x7f060007;
+        public static final int title_activity_coffee_detail=0x7f060008;
+        public static final int updated_at=0x7f060009;
+        public static final int updated_just_now=0x7f06000a;
     }
     public static final class style {
         /** 

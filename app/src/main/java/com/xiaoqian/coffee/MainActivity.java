@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.xiaoqian.coffee.R;
+import com.xiaoqian.coffee.util.RefreshableView;
 
 public class MainActivity extends Activity {
 	// Log tag
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
     private List<Coffee> coffeeList = new ArrayList<Coffee>();
 	private ListView listView;
 	private CoffeeListViewAdapter adapter;
+    private RefreshableView refreshableView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,20 +80,39 @@ public class MainActivity extends Activity {
         iconInLayout.setImageResource(R.drawable.drip);
         actionBar.setCustomView(layoutView);
 
-
 		// Creating volley request obj
-		JsonArrayRequest movieReq = new JsonArrayRequest(url,
-				new Response.Listener<JSONArray>() {
-					@Override
-					public void onResponse(JSONArray response) {
-						Log.d(TAG, response.toString());
-						hidePDialog();
+        volleyJsonReq();
 
-						// Parsing json
-						for (int i = 0; i < response.length(); i++) {
-							try {
+        //pull refresh action
+        refreshableView = (RefreshableView)findViewById(R.id.refreshable_view);
+        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //volleyJsonReq();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                refreshableView.finishRefreshing();
+            }
+        }, 0);
+	}
 
-								JSONObject obj = response.getJSONObject(i);
+    private void volleyJsonReq() {
+        coffeeList.clear();
+        JsonArrayRequest coffeeReq = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        hidePDialog();
+
+                        // Parsing json
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+
+                                JSONObject obj = response.getJSONObject(i);
 
                                 Coffee coffee = new Coffee();
                                 coffee.setCoffeeName(obj.getString("name"));
@@ -99,28 +120,29 @@ public class MainActivity extends Activity {
                                 coffee.setImageUrl(obj.getString("image_url"));
 
                                 coffeeList.add(coffee);
-							} catch (JSONException e) {
-								e.printStackTrace();
-							}
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
-						}
+                        }
 
-						// notifying list adapter about data changes
-						// so that it renders the list view with updated data
-						adapter.notifyDataSetChanged();
-					}
-				}, new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						VolleyLog.d(TAG, "Error: " + error.getMessage());
-						hidePDialog();
+                        // notifying list adapter about data changes
+                        // so that it renders the list view with updated data
+                        adapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hidePDialog();
 
-					}
-				});
+            }
+        });
 
-		// Adding request to request queue
-		AppController.getInstance().addToRequestQueue(movieReq);
-	}
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(coffeeReq);
+
+    }
 
 	@Override
 	public void onDestroy() {

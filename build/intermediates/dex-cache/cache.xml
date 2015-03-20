@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Applications/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/abc/Documents/AndroidExamplePrj/CoffeeXiaoqian/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-d8648f9249df09469ae79892050121be0fe60a45.jar" />
+    </item>
+    <item
+        jar="/Users/abc/Documents/AndroidExamplePrj/CoffeeXiaoqian/app/libs/volley.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
+        <dex dex="/Users/abc/Documents/AndroidExamplePrj/CoffeeXiaoqian/app/build/intermediates/pre-dexed/debug/volley-463405fac47d4fd12fca821bccc2aa652259b66a.jar" />
+    </item>
+
+</items>

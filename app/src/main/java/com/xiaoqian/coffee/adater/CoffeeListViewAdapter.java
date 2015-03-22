@@ -86,7 +86,7 @@ public class CoffeeListViewAdapter extends BaseAdapter{
 
         // description
         desc.setText(m.getCoffeeDesc());
-/*
+
         final String coffeeName = m.getCoffeeName();
         final String coffeeDesc = m.getCoffeeDesc();
         final String coffeeUrl = m.getImageUrl();
@@ -102,7 +102,7 @@ public class CoffeeListViewAdapter extends BaseAdapter{
 
             }
         });
-*/
+
         return convertView;
     }
 
